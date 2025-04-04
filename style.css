@@ -1,0 +1,480 @@
+/* ==========================================================================
+   CSS Variables & Root Styles
+   ========================================================================== */
+:root {
+  /* Colors */
+  --clr-primary: hsl(200, 85%, 55%); /* A vibrant blue as accent */
+  --clr-primary-light: hsl(200, 85%, 65%);
+  --clr-primary-dark: hsl(200, 85%, 45%);
+
+  --clr-bg-page: hsl(219, 16%, 17%); /* Lighter page background */
+  --clr-bg-card: hsl(230, 15%, 18%); /* Dark card background */
+  --clr-bg-card-light: hsl(230, 15%, 25%);
+
+  --clr-text-light: hsl(0, 0%, 95%);
+  --clr-text-dark: hsl(230, 10%, 30%);
+  --clr-text-muted: hsl(230, 10%, 60%);
+  --clr-text-on-card: hsl(0, 0%, 90%);
+  --clr-text-label: hsl(230, 20%, 75%);
+
+  --clr-border: hsl(230, 10%, 35%);
+  --clr-border-focus: var(--clr-primary);
+  --clr-border-input: hsl(220, 10%, 80%);
+
+  --clr-error: hsl(0, 75%, 60%);
+  --clr-success: hsl(145, 63%, 49%); /* Added success color */
+
+  /* Typography */
+  --font-primary: "Poppins", sans-serif;
+  --fz-base: 16px; /* Base font size for rem calculations */
+  --fz-sm: 0.875rem;
+  --fz-md: 1rem;
+  --fz-lg: 1.25rem;
+  --fz-xl: 1.5rem;
+  --fz-xxl: 2rem;
+  --fz-heading: 1.75rem;
+  --fz-result: 2.5rem;
+
+  /* Spacing */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 0.75rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --spacing-xxl: 3rem;
+
+  /* Borders & Shadows */
+  --border-radius-sm: 4px;
+  --border-radius-md: 8px;
+  --border-radius-lg: 15px;
+  --box-shadow-card: 0 5px 20px rgba(0, 0, 0, 0.1);
+  --box-shadow-card-dark: 0 8px 25px rgba(0, 0, 0, 0.3);
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+}
+
+/* ==========================================================================
+     Base & General Styles
+     ========================================================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: var(--fz-base);
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-primary);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  background-color: var(--clr-bg-page);
+  color: var(--clr-text-dark);
+  line-height: 1.6;
+  padding-top: var(--spacing-lg);
+  padding-bottom: 80px; /* Space for footer if it were fixed */
+}
+
+.container {
+  width: 90%;
+  max-width: 700px; /* Slightly narrower for focus */
+  padding: 0; /* Padding handled by sections */
+  margin: 0 auto var(--spacing-xl);
+}
+
+hr {
+  border: none;
+  height: 1px;
+  background-color: var(--clr-border);
+  margin: var(--spacing-xl) 0;
+}
+
+/* Helper for icons */
+.icon-left {
+  margin-right: var(--spacing-sm);
+  color: var(--clr-primary-light); /* Make heading icons stand out */
+  font-size: 0.9em; /* Slightly smaller than heading text */
+  vertical-align: baseline;
+}
+
+/* ==========================================================================
+     Feature Sections / Cards
+     ========================================================================== */
+
+.feature-section {
+  background-color: var(--clr-bg-card);
+  color: var(--clr-text-on-card);
+  border-radius: var(--border-radius-lg);
+  margin-bottom: var(--spacing-xl);
+  padding: var(--spacing-lg) var(--spacing-xl);
+  box-shadow: var(--box-shadow-card-dark);
+  transition: transform var(--transition-normal),
+    box-shadow var(--transition-normal);
+}
+
+/* Add a subtle lift on hover (optional) */
+.feature-section:hover {
+  /* transform: translateY(-3px); */
+  /* box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35); */
+}
+
+.feature-section h2 {
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: var(--spacing-xl);
+  font-weight: 700;
+  font-size: var(--fz-heading);
+  color: var(--clr-text-light);
+  letter-spacing: 0.5px;
+  display: flex; /* Align icon and text */
+  align-items: center;
+  justify-content: center;
+}
+
+/* Keep unique border for Age Calculator */
+#age-calculator {
+  /* border-bottom-right-radius: 70px; */ /* Consider if this still fits the design */
+}
+
+/* ==========================================================================
+     Forms, Inputs & Labels
+     ========================================================================== */
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+.date-input {
+  display: grid; /* Use Grid for better alignment */
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(120px, 1fr)
+  ); /* Responsive columns */
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-lg);
+}
+
+/* Use input-group for single inputs too for consistency */
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+  flex: 1; /* Allow groups to take space */
+}
+
+label {
+  font-size: var(--fz-sm);
+  font-weight: 600;
+  color: var(--clr-text-label);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="date"],
+input[type="datetime-local"],
+select {
+  width: 100%;
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: 1px solid var(--clr-border-input);
+  border-radius: var(--border-radius-md);
+  font-family: var(--font-primary);
+  font-size: var(--fz-md);
+  font-weight: 400;
+  color: var(--clr-text-dark);
+  background-color: #fff;
+  outline: none;
+  transition: border-color var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+input::placeholder {
+  color: var(--clr-text-muted);
+  font-weight: 400;
+}
+
+input:focus,
+select:focus {
+  border-color: var(--clr-border-focus);
+  box-shadow: 0 0 0 3px hsla(var(--clr-primary), 0.3); /* Use hsla with variable */
+}
+
+/* Specific styling for date/time inputs */
+input[type="date"],
+input[type="datetime-local"] {
+  appearance: none; /* Basic reset */
+  position: relative;
+}
+
+/* Style calendar icon container if possible (browser dependent) */
+input[type="date"]::-webkit-calendar-picker-indicator {
+  opacity: 0.6;
+  cursor: pointer;
+  transition: opacity var(--transition-fast);
+}
+input[type="date"]::-webkit-calendar-picker-indicator:hover {
+  opacity: 1;
+}
+
+/* Input Error States */
+.input-group.error label {
+  color: var(--clr-error);
+}
+
+.input-group.error input {
+  border-color: var(--clr-error);
+  background-color: hsla(0, 100%, 95%, 1); /* Slight red background */
+}
+
+.input-group.error input:focus {
+  box-shadow: 0 0 0 3px hsla(0, 75%, 60%, 0.3);
+}
+
+.error-message {
+  color: var(--clr-error);
+  font-size: var(--fz-sm);
+  min-height: 1.2em; /* Reserve space to prevent layout shifts */
+  font-weight: 500;
+  display: block;
+}
+
+/* ==========================================================================
+     Calculate Button
+     ========================================================================== */
+
+.calculate-button {
+  background-color: var(--clr-primary);
+  color: var(--clr-text-light);
+  font-family: var(--font-primary);
+  font-size: var(--fz-md);
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  border-radius: var(--border-radius-md);
+  padding: var(--spacing-sm) var(--spacing-lg);
+  display: inline-flex; /* Use inline-flex */
+  justify-content: center;
+  align-items: center;
+  gap: var(--spacing-sm); /* Space between icon and text */
+  cursor: pointer;
+  border: none;
+  outline: none;
+  transition: background-color var(--transition-fast),
+    transform var(--transition-fast), box-shadow var(--transition-fast);
+  margin: var(--spacing-md) auto 0; /* Center horizontally */
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+  text-decoration: none; /* In case it's ever an <a> */
+  width: auto; /* Allow button to size naturally */
+  height: auto;
+}
+
+.calculate-button .icon-left {
+  margin-right: 0; /* Remove margin as gap is used */
+  color: inherit; /* Inherit button text color */
+  font-size: 1.1em; /* Slightly larger icon */
+}
+
+.calculate-button:hover {
+  background-color: var(--clr-primary-light);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.2);
+}
+
+.calculate-button:active {
+  background-color: var(--clr-primary-dark);
+  transform: translateY(0);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+}
+
+.calculate-button:focus-visible {
+  /* Improved focus outline */
+  outline: 2px solid var(--clr-primary-dark);
+  outline-offset: 2px;
+}
+
+/* ==========================================================================
+     Result Display
+     ========================================================================== */
+
+.result {
+  font-size: var(--fz-lg);
+  font-weight: 400;
+  font-style: normal; /* Changed from italic */
+  color: var(--clr-text-on-card);
+  line-height: 1.5;
+  margin-top: var(--spacing-xl);
+  text-align: center;
+  background-color: var(--clr-bg-card-light); /* Slight background difference */
+  padding: var(--spacing-md) var(--spacing-lg);
+  border-radius: var(--border-radius-md);
+  border: 1px solid var(--clr-border);
+}
+
+.result p {
+  margin: 0 0 var(--spacing-xs) 0;
+}
+.result p:last-child {
+  margin-bottom: 0;
+}
+
+.result span {
+  color: var(--clr-primary-light); /* Accent color for numbers/results */
+  font-weight: 700;
+  font-size: var(--fz-xxl); /* Make numbers larger */
+  display: inline-block; /* Needed for potential spacing */
+  margin-right: var(--spacing-xs);
+}
+
+/* Specific layout for Countdown Timer Results */
+.countdown-result {
+  display: flex;
+  justify-content: space-around; /* Distribute items evenly */
+  align-items: baseline; /* Align based on text bottom */
+  flex-wrap: wrap; /* Allow wrapping on small screens */
+  gap: var(--spacing-md);
+  padding: var(--spacing-lg);
+}
+
+.countdown-item {
+  display: flex;
+  flex-direction: column; /* Stack number and label */
+  align-items: center;
+  font-size: var(--fz-sm); /* Label font size */
+  color: var(--clr-text-label);
+  min-width: 60px; /* Ensure some minimum width */
+}
+
+.countdown-item span {
+  font-size: var(--fz-result); /* Large numbers for countdown */
+  margin-right: 0; /* Remove default span margin */
+  margin-bottom: var(--spacing-xs); /* Space between number and label */
+  line-height: 1;
+}
+
+/* ==========================================================================
+     Footer
+     ========================================================================== */
+
+.footer {
+  background-color: var(--clr-text-dark);
+  color: var(--clr-text-muted);
+  text-align: center;
+  padding: var(--spacing-md) 0;
+  width: 100%;
+  margin-top: auto; /* Pushes footer to bottom */
+  font-size: var(--fz-sm);
+}
+
+.footer a {
+  color: var(--clr-primary-light);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.footer a:hover {
+  color: var(--clr-text-light);
+  text-decoration: underline;
+}
+
+/* Attribution (If needed outside footer) */
+/* .attribution { ... } */
+
+/* ==========================================================================
+     Media Queries (Responsive Design)
+     ========================================================================== */
+
+@media (max-width: 768px) {
+  :root {
+    --fz-heading: 1.5rem;
+    --fz-result: 2rem;
+  }
+
+  .container {
+    width: 95%;
+  }
+
+  .feature-section {
+    padding: var(--spacing-lg);
+  }
+
+  .date-input {
+    grid-template-columns: 1fr; /* Stack inputs */
+    gap: var(--spacing-md);
+  }
+
+  .calculate-button {
+    width: 100%; /* Make button full width */
+    padding: var(--spacing-md);
+  }
+
+  .result span {
+    font-size: var(--fz-xl); /* Adjust result number size */
+  }
+
+  .countdown-result {
+    padding: var(--spacing-md);
+    gap: var(--spacing-sm);
+  }
+  .countdown-item span {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --fz-base: 14px;
+    --fz-heading: 1.3rem;
+    --fz-result: 1.8rem;
+  }
+  body {
+    padding-top: var(--spacing-md);
+  }
+
+  .feature-section {
+    padding: var(--spacing-md);
+    border-radius: var(--border-radius-md);
+  }
+
+  .feature-section h2 {
+    margin-bottom: var(--spacing-lg);
+  }
+
+  input[type="text"],
+  input[type="number"],
+  input[type="date"],
+  input[type="datetime-local"],
+  select {
+    padding: var(--spacing-sm);
+    font-size: var(--fz-md); /* Keep input font size readable */
+  }
+
+  .calculate-button {
+    font-size: var(--fz-sm);
+  }
+
+  .result {
+    padding: var(--spacing-sm) var(--spacing-md);
+  }
+
+  .countdown-result {
+    flex-direction: row; /* Keep row layout */
+    justify-content: space-around;
+    gap: var(--spacing-xs);
+  }
+  .countdown-item {
+    min-width: 50px;
+    font-size: 0.7rem;
+  }
+  .countdown-item span {
+    font-size: 1.5rem;
+  }
+}

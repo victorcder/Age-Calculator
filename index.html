@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Date & Time Hub</title>
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!-- Your Stylesheet -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="container">
+      <!-- Age Calculator -->
+      <section class="feature-section" id="age-calculator">
+        <h2><i class="fas fa-baby icon-left"></i>Age Calculator</h2>
+        <form id="age-form">
+          <div class="date-input">
+            <div class="input-group">
+              <label for="day">Day</label>
+              <input
+                type="number"
+                id="day"
+                placeholder="DD"
+                min="1"
+                max="31"
+                required
+              />
+              <small class="error-message"></small>
+            </div>
+            <div class="input-group">
+              <label for="month">Month</label>
+              <input
+                type="number"
+                id="month"
+                placeholder="MM"
+                min="1"
+                max="12"
+                required
+              />
+              <small class="error-message"></small>
+            </div>
+            <div class="input-group">
+              <label for="year">Year</label>
+              <input
+                type="number"
+                id="year"
+                placeholder="YYYY"
+                min="1800"
+                max="2025"
+                required
+              />
+              <small class="error-message"></small>
+            </div>
+          </div>
+
+          <hr />
+
+          <button type="submit" class="calculate-button">
+            <i class="fas fa-calculator icon-left"></i> Calculate Age
+          </button>
+
+          <div class="result" aria-live="polite">
+            <p><span id="years">--</span> years</p>
+            <p><span id="months">--</span> months</p>
+            <p><span id="days">--</span> days</p>
+          </div>
+        </form>
+      </section>
+
+      <!-- Date Difference Calculator -->
+      <section class="feature-section" id="date-difference">
+        <h2><i class="fas fa-calendar-alt icon-left"></i>Date Difference</h2>
+        <form id="date-difference-form">
+          <div class="date-input">
+            <div class="input-group">
+              <label for="start-date">Start Date</label>
+              <input type="date" id="start-date" required />
+              <small class="error-message"></small>
+              <!-- Added for consistency -->
+            </div>
+            <div class="input-group">
+              <label for="end-date">End Date</label>
+              <input type="date" id="end-date" required />
+              <small class="error-message"></small>
+              <!-- Added for consistency -->
+            </div>
+          </div>
+          <button type="submit" class="calculate-button">
+            <i class="fas fa-arrows-alt-h icon-left"></i> Calculate Difference
+          </button>
+          <div class="result" aria-live="polite">
+            <p><span id="days-between">--</span> Days Between</p>
+          </div>
+        </form>
+      </section>
+
+      <!-- Countdown Timer -->
+      <section class="feature-section" id="countdown-timer">
+        <h2><i class="fas fa-stopwatch-20 icon-left"></i>Countdown Timer</h2>
+        <form id="countdown-form">
+          <div class="input-group">
+            <label for="countdown-date">Target Date & Time</label>
+            <input type="datetime-local" id="countdown-date" required />
+            <small class="error-message"></small>
+            <!-- Added for consistency -->
+          </div>
+          <button type="submit" class="calculate-button">
+            <i class="fas fa-play icon-left"></i> Start Countdown
+          </button>
+          <div
+            class="result countdown-result"
+            id="countdown"
+            aria-live="polite"
+          >
+            <!-- Using flexbox for countdown items -->
+            <div class="countdown-item">
+              <span id="countdown-days">--</span> Days
+            </div>
+            <div class="countdown-item">
+              <span id="countdown-hours">--</span> Hours
+            </div>
+            <div class="countdown-item">
+              <span id="countdown-minutes">--</span> Mins
+            </div>
+            <div class="countdown-item">
+              <span id="countdown-seconds">--</span> Secs
+            </div>
+          </div>
+        </form>
+      </section>
+
+      <!-- Day of the Week Calculator -->
+      <section class="feature-section" id="day-of-week">
+        <h2><i class="fas fa-calendar-day icon-left"></i>Day of the Week</h2>
+        <form id="day-of-week-form">
+          <div class="input-group">
+            <label for="dow-date">Select Date</label>
+            <input type="date" id="dow-date" required />
+            <small class="error-message"></small>
+            <!-- Added for consistency -->
+          </div>
+          <button type="submit" class="calculate-button">
+            <i class="fas fa-search icon-left"></i> Find Day
+          </button>
+          <div class="result" aria-live="polite">
+            <p>It's a <span id="day-of-week-result">--</span></p>
+          </div>
+        </form>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>
+        Challenge by
+        <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+          >Frontend Mentor</a
+        >. Coded by <a href="#">Victor Iurco</a>.
+      </p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
